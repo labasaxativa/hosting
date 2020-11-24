@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<title>GUERRA CIVIL</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no" />
+    
+    <!-- LEAFLET -->
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" />
+	<link rel="stylesheet" type="text/css" href="../css/mapa_leaflet.css" />
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
+    
+    <!-- SIDEBAR -->
+    <link rel="stylesheet" href="../css/L.Control.Sidebar.css" />
+	<!-- PLUGIN COORDENADAS -->
+	<link rel="stylesheet" href="../css/L.Control.MousePosition.css" />    
+    <!-- WMS -->
+	<script src="../js/Leaflet.Spain.WMS.js"></script>    
+    <!-- BUSQUEDA POR CAJA -->
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>    
+    <link rel="stylesheet" href="../css/leaflet-control-boxzoom.css" />
+    <!--EXTENSION INICIAL-->
+    <link rel="stylesheet" href="../css/leaflet.defaultextent.css" />
+    <!--EXTENSION INICIAL-->
+    <link rel="stylesheet" href="../css/L.Control.Locate.css" />
+    <!--LABEL-->    
+    <link rel="stylesheet" href="../css/leaflet.label.css" /> 
+    <link rel="stylesheet" href="../css/leaflet.measure.css" /> 
+
+
+    
+        <link rel="stylesheet" href="../css/leaflet.fullscreen.css" /> 
+
+    <!--CONTROL DE CAPAS-->     
+    <link rel="stylesheet" href="../css/styledLayerControl.css" />
+    <script src="../js/styledLayerControl.js"></script>
+    
+    <script src="../dist/L.Icon.Mapkey.js"></script>
+    <link rel="stylesheet" href="../dist/MapkeyIcons.css" />
+    <style type="text/css">
+        .popup {
+            z-index: 999 !important;
+        }
+        #foto{
+            width: 433px;
+        }
+    </style>
+    
+    
+    
+</head>
+	
+		<div style="width:100%; height:100%" id="map"></div>
+    
+	   <!-- PLUGINS -->	
+	    <script type="text/javascript" src="../plugins/L.Control.MousePosition.js"></script>
+	    <script src="../plugins/leaflet.defaultextent.js"></script>	
+        <script src="../plugins/leaflet.label.js"></script> 
+	    <script src="../plugins/leaflet-control-boxzoom.js"></script>
+        <script type="text/javascript" src="../plugins/leaflet.measure.js"></script>
+        <script src="../plugins/L.Control.Locate.js"></script>
+        <script src="../plugins/Leaflet.fullscreen.js"></script>
+    
+    
+	   <!-- CAPAS -->	
+        <script type="text/javascript" src="../js/datos/mascara.geojson"></script>  
+        <script type="text/javascript" src="../js/datos/bunker.geojson"></script> 
+        <script type="text/javascript" src="../js/datos/aerodromo.geojson"></script> 
+        <script type="text/javascript" src="../js/datos/trinchera.geojson"></script>
+    <!--<script type="text/javascript" src="../js/datos/refugios.geojson"></script> --> 
+        <script type="text/javascript" src="../js/datos/antiaereos.geojson"></script> 
+        <script type="text/javascript" src="../js/datos/bunkerdesapa.geojson"></script> 
+        <script type="text/javascript" src="../js/datos/linea.geojson"></script>
+        <script type="text/javascript" src="../js/datos/pol_prueba.geojson"></script>          
+
+	   <!-- PLUGIN MAPA LEAFLET -->	    
+		<script type="text/javascript" src="../js/mapa_leaflet.js"></script>
+	
+<body>
+    <!--
+   <div id="sidebar_pol">
+    <div id="info"></div>
+    <div id="ubicacion"></div>
+    <div id="sidebar"></div>
+    <div id="grupo"></div>
+   </div>
+
+    -->
+
+    <div id="sidebar">
+      
+
+        <!--   <H3  align="center"><b><br>   FORTIFICACIÓN DEL TERRITORIO LEVANTINO </br>DURANTE LA GUERRA CIVIL ESPAÑOLA</b></p> -->
+         
+  </br><a  href="https://es.wikipedia.org/wiki/L%C3%ADnea_XYZ"; target="blank"> <center><img style="-webkit-user-select: none; FLOAT: center; MARGIN: 20px 0px 0px 0px;  alt="" width="40%" height="40%"; CURSOR: hand" src="    http://patrimonigc.gva.es/documents/167405628/167405676/logo-patrimonio-cultural.jpg/3ac2ef22-cc9a-4cea-83d6-5b949fa88d7c?t=1544451720225?t=1544451720225?t=1543327936312"></a></center></br>
+         
+ <a href="https://es.wikipedia.org/wiki/L%C3%ADnea_XYZ"; target="blank"> <center><img style="-webkit-user-select: none; FLOAT: center; MARGIN: 20px 0px 0px 0px; CURSOR: hand" src="../images/0.-sidebar/bitmap1.png"></center></a><br clear="all">
+ 
+     
+             <br clear="all">
+
+   
+</div>
+       
+<img id="about"  onclick="about()">
+
+      
+<script>
+
+
+    function about(){
+        document.getElementById('about').addEventListener('click', function () {
+            
+        var information =   
+            '<a  href="https://es.wikipedia.org/wiki/L%C3%ADnea_XYZ"; target="blank"> <center><br><br><img style="-webkit-user-select: none; FLOAT: center; MARGIN: 40px 0px 0px 0px;  alt="" width="40%" height="40%"; CURSOR: hand" src="    http://patrimonigc.gva.es/documents/167405628/167405676/logo-patrimonio-cultural.jpg/3ac2ef22-cc9a-4cea-83d6-5b949fa88d7c?t=1544451720225?t=1544451720225?t=1543327936312"></a>' +
+        
+            
+            '<p style="margin-top: 100px; text-align: justify;margin-top: 20px;margin-right: 14px;margin-left: 14px;"> <br><br>En este VISOR DE RECURSOS encontrarás de una manera fácil y atractiva los recursos turísticos de la comarca: espacios naturales, elementos patrimoniales, rutas de senderismo y otro tipo de información útil para la visita, como son los museos y centros de interpretación, las áreas recreativas y una guía de servicios con información sobre dónde comer, dónde alojarse y empresas de turismo activo.La aplicación cuenta con los siguientes controles para navegar por el mapa y localizar los recursos:</br>' +             
+            '</br>' +                 
+            'En este apartado se ofrece la información cartografiada de centenares de bienes del patrimonio valenciano de la Guerra Civil. Para una muestra de 54 bienes, la información está asociada a fichas normalizadas y completas, mientras que para el resto, se ofrece información básica.' +
+            '</br>' + 
+            '</br>' +  
+            'Las cartografías elaboradas incorporan la posición de los elementos patrimoniales localizados con un tipo de representación vectorial y, para su georreferenciación, se ha utilizado el Sistema Geodésico de Referencia ETRS89, proyección UTM en el huso 30. Código EPSG: 25830.</p>'+
+        
+            '<p href="http://www.mancomunidadreservadelsaja.com" target="_blank" style="color: green;margin-top:40px;vertical-align: text-bottom;">Visor de Recursos <b>Patrimonials Valenciàns de la Guerra Civil ©</b> 2021 </p>'
+        
+        
+
+        
+        
+        
+        sidebar.setContent(information);        
+        sidebar.show();
+    })
+    }
+
+    about();
+
+</script>
+
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
+    <script src="../js/L.Control.Sidebar.js"></script>
+    
+
+
+    
+</body>
+</html>
+
+
